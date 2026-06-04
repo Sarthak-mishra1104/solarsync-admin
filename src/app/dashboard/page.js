@@ -64,7 +64,7 @@ export default async function Dashboard() {
           </p>
 
           <h1 className="text-5xl font-bold mb-4">
-            Welcome Back, Sarthak 👋
+            Welcome Back, Admin Panel 👋
           </h1>
 
           <p className="text-lg text-green-50">
