@@ -25,7 +25,7 @@ export default async function SiteVisitsPage() {
     <div className="min-h-screen bg-[#F8FFFA] flex">
       <Sidebar />
 
-      <main className="flex-1 p-8">
+     <main className="flex-1 p-4 md:p-8 overflow-x-hidden">
 
         <h1 className="text-4xl font-bold text-gray-800 mb-8">
           📅 Site Visits

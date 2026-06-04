@@ -10,10 +10,7 @@ async function getLeads() {
   await connectDB();
 
   const leads = await Lead.find({
-  $or: [
-    { isArchived: false },
-    { isArchived: { $exists: false } },
-  ],
+  isArchived: false,
 })
     .sort({ createdAt: -1 })
     .lean();
@@ -25,12 +22,12 @@ export default async function LeadsPage() {
   const leads = await getLeads();
 
   return (
-    <div className="min-h-screen bg-[#F8FFFA] p-8">
+   <div className="min-h-screen bg-[#F8FFFA] p-4 md:p-8">
 
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-4xl font-bold text-gray-800">
+      <h1 className="text-2xl md:text-4xl font-bold  text-gray-800">
             👥 Lead Management
           </h1>
 

@@ -41,7 +41,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="w-72 min-h-screen bg-[#ECFDF3] border-r border-green-100 p-6">
+   <aside className="hidden md:block w-72 min-h-screen bg-[#ECFDF3] border-r border-green-100 p-6">
 
       <div className="mb-12">
         <h1 className="text-3xl font-extrabold text-gray-800">
