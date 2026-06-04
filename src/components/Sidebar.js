@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import LogoutButton from "./LogoutButton";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -73,7 +74,9 @@ export default function Sidebar() {
       </nav>
 
       <div className="mt-12 p-5 rounded-3xl bg-gradient-to-br from-green-400 to-green-500 text-white">
-
+<div className="mt-6">
+  <LogoutButton />
+</div>
         <h3 className="font-bold text-lg">
           ☀ SolarSync AI
         </h3>
