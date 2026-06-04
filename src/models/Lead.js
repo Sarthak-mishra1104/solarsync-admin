@@ -42,12 +42,21 @@ const LeadSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    isArchived: {
+  type: Boolean,
+  default: false,
+},
+visitCompleted: {
+  type: Boolean,
+  default: false,
+},
 
     notes: {
       type: String,
       default: "",
     },
   },
+
   {
     timestamps: true,
   }

@@ -18,6 +18,11 @@ export default function Sidebar() {
       href: "/leads",
     },
     {
+  name: "Archived Leads",
+  icon: "📦",
+  href: "/archived-leads",
+},
+    {
   name: "Site Visits",
   icon: "📅",
   href: "/site-visits",

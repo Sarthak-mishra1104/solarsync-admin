@@ -1,3 +1,4 @@
+import CompleteVisitButton from "@/components/CompleteVisitButton";
 import Sidebar from "@/components/Sidebar";
 import { connectDB } from "@/lib/mongodb";
 import Lead from "@/models/Lead";
@@ -41,6 +42,8 @@ export default async function SiteVisitsPage() {
                 <th className="text-left p-5">City</th>
                 <th className="text-left p-5">Visit Date</th>
                 <th className="text-left p-5">Engineer</th>
+                <th className="text-left p-5">Status</th>
+<th className="text-left p-5">Action</th>
               </tr>
             </thead>
 
@@ -64,9 +67,33 @@ export default async function SiteVisitsPage() {
                       : "-"}
                   </td>
 
-                  <td className="p-5">
-                    {visit.assignedTo || "-"}
-                  </td>
+                 <td className="p-5">
+  {visit.assignedTo || "-"}
+</td>
+
+<td className="p-5">
+  {visit.visitCompleted ? (
+    <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+      Completed
+    </span>
+  ) : (
+    <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
+      Pending
+    </span>
+  )}
+</td>
+
+<td className="p-5">
+  {!visit.visitCompleted ? (
+    <CompleteVisitButton
+      leadId={visit._id}
+    />
+  ) : (
+    <span className="text-green-600 font-medium">
+      ✅ Done
+    </span>
+  )}
+</td>
                 </tr>
               ))}
             </tbody>

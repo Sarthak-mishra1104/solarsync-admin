@@ -1,3 +1,4 @@
+import ArchiveButton from "@/components/ArchiveButton";
 import ScheduleVisitButton from "@/components/ScheduleVisitButton";
 import StatusDropdown from "@/components/StatusDropdown";
 import { connectDB } from "@/lib/mongodb";
@@ -8,7 +9,12 @@ import Link from "next/link";
 async function getLeads() {
   await connectDB();
 
-  const leads = await Lead.find({})
+  const leads = await Lead.find({
+  $or: [
+    { isArchived: false },
+    { isArchived: { $exists: false } },
+  ],
+})
     .sort({ createdAt: -1 })
     .lean();
 
@@ -125,7 +131,9 @@ export default async function LeadsPage() {
     <ScheduleVisitButton
       leadId={lead._id}
     />
-
+<ArchiveButton
+  leadId={lead._id}
+/>
   </div>
 </td>
                 </tr>
