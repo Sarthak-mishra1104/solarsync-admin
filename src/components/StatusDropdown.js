@@ -41,7 +41,7 @@ export default function StatusDropdown({ leadId, currentStatus }) {
       value={status}
       onChange={handleChange}
       disabled={loading}
-      className="border border-orange-200 rounded-lg px-3 py-2 bg-white text-sm"
+    className="border border-green-200 rounded-xl px-3 py-2 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-green-400" 
     >
       <option value="New Lead">New Lead</option>
       <option value="Contacted">Contacted</option>

@@ -1,7 +1,9 @@
+import ScheduleVisitButton from "@/components/ScheduleVisitButton";
 import StatusDropdown from "@/components/StatusDropdown";
 import { connectDB } from "@/lib/mongodb";
 import Lead from "@/models/Lead";
 import Link from "next/link";
+
 
 async function getLeads() {
   await connectDB();
@@ -112,12 +114,20 @@ export default async function LeadsPage() {
                     </span>
                   </td>
 
-                  <td className="p-5">
-                    <StatusDropdown
-                      leadId={lead._id}
-                      currentStatus={lead.status}
-                    />
-                  </td>
+                  <td className="p-4">
+  <div className="flex flex-col gap-2">
+    
+    <StatusDropdown
+      leadId={lead._id}
+      currentStatus={lead.status}
+    />
+
+    <ScheduleVisitButton
+      leadId={lead._id}
+    />
+
+  </div>
+</td>
                 </tr>
               ))}
             </tbody>

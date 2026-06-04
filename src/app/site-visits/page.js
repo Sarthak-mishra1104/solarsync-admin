@@ -1,17 +1,80 @@
 import Sidebar from "@/components/Sidebar";
+import { connectDB } from "@/lib/mongodb";
+import Lead from "@/models/Lead";
 
-export default function SiteVisits() {
+async function getSiteVisits() {
+  await connectDB();
+
+  const visits = await Lead.find({
+    siteVisitDate: {
+      $exists: true,
+      $ne: null,
+    },
+  })
+    .sort({ siteVisitDate: 1 })
+    .lean();
+
+  return JSON.parse(JSON.stringify(visits));
+}
+
+export default async function SiteVisitsPage() {
+  const visits = await getSiteVisits();
+
   return (
-    <div className="min-h-screen flex bg-[#F8FFFA]">
+    <div className="min-h-screen bg-[#F8FFFA] flex">
       <Sidebar />
+
       <main className="flex-1 p-8">
-        <h1 className="text-4xl font-bold mb-4">
+
+        <h1 className="text-4xl font-bold text-gray-800 mb-8">
           📅 Site Visits
         </h1>
 
-        <div className="bg-white rounded-3xl p-8 shadow">
-          No site visits scheduled yet.
+        <div className="bg-white rounded-3xl shadow-lg overflow-hidden border border-green-100">
+
+          <table className="w-full">
+
+            <thead className="bg-gradient-to-r from-green-600 to-emerald-500 text-white">
+              <tr>
+                <th className="text-left p-5">Customer</th>
+                <th className="text-left p-5">Phone</th>
+                <th className="text-left p-5">City</th>
+                <th className="text-left p-5">Visit Date</th>
+                <th className="text-left p-5">Engineer</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {visits.map((visit) => (
+                <tr
+                  key={visit._id}
+                  className="border-b hover:bg-green-50"
+                >
+                  <td className="p-5">{visit.name}</td>
+
+                  <td className="p-5">{visit.phone}</td>
+
+                  <td className="p-5">{visit.city}</td>
+
+                  <td className="p-5">
+                    {visit.siteVisitDate
+                      ? new Date(
+                          visit.siteVisitDate
+                        ).toLocaleDateString()
+                      : "-"}
+                  </td>
+
+                  <td className="p-5">
+                    {visit.assignedTo || "-"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+
+          </table>
+
         </div>
+
       </main>
     </div>
   );
