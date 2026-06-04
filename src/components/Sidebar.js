@@ -18,20 +18,20 @@ export default function Sidebar() {
       href: "/leads",
     },
     {
-      name: "Site Visits",
-      icon: "📅",
-      href: "#",
-    },
-    {
-      name: "Analytics",
-      icon: "📈",
-      href: "#",
-    },
-    {
-      name: "Settings",
-      icon: "⚙️",
-      href: "#",
-    },
+  name: "Site Visits",
+  icon: "📅",
+  href: "/site-visits",
+},
+{
+  name: "Analytics",
+  icon: "📈",
+  href: "/analytics",
+},
+{
+  name: "Settings",
+  icon: "⚙️",
+  href: "/settings",
+},
   ];
 
   return (
