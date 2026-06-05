@@ -1,3 +1,4 @@
+import MobileNav from "@/components/MobileNav";
 import { connectDB } from "@/lib/mongodb";
 import Lead from "@/models/Lead";
 import Sidebar from "@/components/Sidebar";
@@ -57,7 +58,7 @@ export default async function Dashboard() {
       <Sidebar />
 
      <main className="flex-1 p-4 md:p-8 overflow-x-hidden">
-
+<MobileNav />
         <div className="bg-gradient-to-r from-green-500 to-emerald-400 rounded-3xl p-8 text-white mb-8">
           <p className="text-green-100 mb-2">
             ☀ SolarSync Admin

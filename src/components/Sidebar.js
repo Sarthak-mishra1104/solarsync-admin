@@ -17,7 +17,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="hidden md:block w-64 min-h-screen bg-[#ECFDF3] border-r border-green-100 p-4 md:p-6">
+   <aside className="hidden md:block w-64 min-h-screen bg-[#ECFDF3] border-r border-green-100 p-4 md:p-6">
       <div className="mb-8">
         <h1 className="text-2xl md:text-3xl font-extrabold text-gray-800">
           Solar<span className="text-green-500">Sync</span>
