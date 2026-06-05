@@ -50,6 +50,7 @@ async function getDashboardData() {
   };
 }
 
+
 export default async function Dashboard() {
   const data = await getDashboardData();
 
@@ -57,70 +58,84 @@ export default async function Dashboard() {
     <div className="min-h-screen bg-[#F8FFFA] md:flex">
       <Sidebar />
 
-     <main className="flex-1 p-4 md:p-8 overflow-x-hidden">
-<MobileNav />
-        <div className="bg-gradient-to-r from-green-500 to-emerald-400 rounded-3xl p-8 text-white mb-8">
-          <p className="text-green-100 mb-2">
+      <main className="flex-1 p-3 md:p-8 overflow-x-hidden">
+        <MobileNav />
+
+        {/* Hero */}
+        <div className="bg-gradient-to-r from-green-500 to-emerald-400 rounded-2xl p-4 text-white mb-4">
+          <p className="text-green-100 text-sm mb-1">
             ☀ SolarSync Admin
           </p>
 
-          <h1 className="text-5xl font-bold mb-4">
-            Welcome Back, Admin Panel 👋
+          <h1 className="text-2xl md:text-5xl font-bold mb-2">
+            Welcome Back 👋
           </h1>
 
-          <p className="text-lg text-green-50">
+          <p className="hidden md:block text-lg text-green-50">
             Manage leads, site visits, proposals and solar sales
             from one powerful dashboard.
           </p>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-6 gap-3">
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-green-100">
-            <div className="text-4xl mb-3">👥</div>
-            <h3 className="text-gray-500">Total Leads</h3>
-            <p className="text-4xl font-bold text-green-600 mt-2">
+          <div className="bg-white rounded-xl shadow p-3 border border-green-100">
+            <div className="text-2xl mb-1">👥</div>
+            <h3 className="text-xs md:text-base text-gray-500">
+              Total Leads
+            </h3>
+            <p className="text-xl md:text-4xl font-bold text-green-600 mt-1">
               {data.totalLeads}
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-blue-100">
-            <div className="text-4xl mb-3">🟢</div>
-            <h3 className="text-gray-500">Active Leads</h3>
-            <p className="text-4xl font-bold text-blue-600 mt-2">
+          <div className="bg-white rounded-xl shadow p-3 border border-blue-100">
+            <div className="text-2xl mb-1">🟢</div>
+            <h3 className="text-xs md:text-base text-gray-500">
+              Active
+            </h3>
+            <p className="text-xl md:text-4xl font-bold text-blue-600 mt-1">
               {data.activeLeads}
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-            <div className="text-4xl mb-3">📦</div>
-            <h3 className="text-gray-500">Archived</h3>
-            <p className="text-4xl font-bold text-gray-600 mt-2">
+          <div className="bg-white rounded-xl shadow p-3 border border-gray-100">
+            <div className="text-2xl mb-1">📦</div>
+            <h3 className="text-xs md:text-base text-gray-500">
+              Archive
+            </h3>
+            <p className="text-xl md:text-4xl font-bold text-gray-600 mt-1">
               {data.archivedLeads}
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-yellow-100">
-            <div className="text-4xl mb-3">📅</div>
-            <h3 className="text-gray-500">Site Visits</h3>
-            <p className="text-4xl font-bold text-yellow-600 mt-2">
+          <div className="bg-white rounded-xl shadow p-3 border border-yellow-100">
+            <div className="text-2xl mb-1">📅</div>
+            <h3 className="text-xs md:text-base text-gray-500">
+              Visits
+            </h3>
+            <p className="text-xl md:text-4xl font-bold text-yellow-600 mt-1">
               {data.siteVisits}
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-indigo-100">
-            <div className="text-4xl mb-3">✅</div>
-            <h3 className="text-gray-500">Completed</h3>
-            <p className="text-4xl font-bold text-indigo-600 mt-2">
+          <div className="bg-white rounded-xl shadow p-3 border border-indigo-100">
+            <div className="text-2xl mb-1">✅</div>
+            <h3 className="text-xs md:text-base text-gray-500">
+              Done
+            </h3>
+            <p className="text-xl md:text-4xl font-bold text-indigo-600 mt-1">
               {data.completedVisits}
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-emerald-100">
-            <div className="text-4xl mb-3">⚡</div>
-            <h3 className="text-gray-500">Conversions</h3>
-            <p className="text-4xl font-bold text-emerald-600 mt-2">
+          <div className="bg-white rounded-xl shadow p-3 border border-emerald-100">
+            <div className="text-2xl mb-1">⚡</div>
+            <h3 className="text-xs md:text-base text-gray-500">
+              Converted
+            </h3>
+            <p className="text-xl md:text-4xl font-bold text-emerald-600 mt-1">
               {data.conversions}
             </p>
           </div>
@@ -128,42 +143,40 @@ export default async function Dashboard() {
         </div>
 
         {/* Recent Activity */}
-        <div className="mt-10 bg-white rounded-2xl shadow-lg p-6">
-          <h3 className="text-xl font-bold mb-4">
+        <div className="mt-6 bg-white rounded-2xl shadow p-4 md:p-6">
+          <h3 className="text-lg md:text-xl font-bold mb-4">
             Recent Activity
           </h3>
 
-          <div className="space-y-4">
-
+          <div className="space-y-3">
             {data.recentLeads.map((lead) => (
               <div
                 key={lead._id}
-                className="bg-green-50 border border-green-100 rounded-2xl p-4 hover:bg-green-100 transition"
+                className="bg-green-50 border border-green-100 rounded-xl p-3 hover:bg-green-100 transition"
               >
                 <div className="flex justify-between items-center">
-
                   <div>
-                    <h4 className="font-semibold text-gray-800">
+                    <h4 className="font-semibold text-gray-800 text-sm md:text-base">
                       👤 {lead.name}
                     </h4>
 
-                    <p className="text-gray-500 text-sm">
+                    <p className="text-gray-500 text-xs md:text-sm">
                       📍 {lead.city || "Unknown City"}
                     </p>
                   </div>
 
-                  <div className="text-sm text-green-600 font-medium">
+                  <div className="text-xs md:text-sm text-green-600 font-medium">
                     {lead.status}
                   </div>
-
                 </div>
               </div>
             ))}
-
           </div>
+
         </div>
 
       </main>
     </div>
   );
 }
+
