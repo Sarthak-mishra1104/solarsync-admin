@@ -53,7 +53,7 @@ export default async function Dashboard() {
   const data = await getDashboardData();
 
   return (
-    <div className="min-h-screen bg-[#F8FFFA] flex">
+    <div className="min-h-screen bg-[#F8FFFA] md:flex">
       <Sidebar />
 
      <main className="flex-1 p-4 md:p-8 overflow-x-hidden">
