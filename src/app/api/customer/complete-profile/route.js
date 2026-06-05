@@ -1,4 +1,4 @@
-```javascript
+
 import { connectDB } from "@/lib/mongodb";
 import Customer from "@/models/Customer";
 
@@ -62,4 +62,4 @@ export async function POST(request) {
     );
   }
 }
-```
+
