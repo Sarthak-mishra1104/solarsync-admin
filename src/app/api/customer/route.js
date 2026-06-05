@@ -14,7 +14,29 @@ export async function OPTIONS() {
     },
   });
 }
+export async function GET(request) {
+  try {
+    await connectDB();
 
+    const { searchParams } = new URL(request.url);
+
+    const email = searchParams.get("email");
+
+    const customer = await Customer.findOne({
+      email,
+    });
+
+    return Response.json({
+      success: true,
+      customer,
+    });
+  } catch (error) {
+    return Response.json({
+      success: false,
+      error: error.message,
+    });
+  }
+}
 export async function POST(request) {
   try {
     await connectDB();
