@@ -7,14 +7,26 @@ export async function POST(request) {
 
     const { leadId } = await request.json();
 
-    await Lead.findByIdAndUpdate(leadId, {
-      isArchived: false,
-    });
+    console.log("RESTORE ID:", leadId);
+
+    const updatedLead = await Lead.findByIdAndUpdate(
+      leadId,
+      {
+        isArchived: false,
+      },
+      { new: true }
+    );
+
+    console.log("UPDATED LEAD:", updatedLead);
 
     return Response.json({
       success: true,
+      updatedLead,
     });
+
   } catch (error) {
+    console.error(error);
+
     return Response.json({
       success: false,
       error: error.message,
