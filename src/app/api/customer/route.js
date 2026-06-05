@@ -6,7 +6,7 @@ export async function OPTIONS() {
     status: 200,
     headers: {
       "Access-Control-Allow-Origin":
-        "https://vikram-solar-fnex.vercel.app",
+        "*",
       "Access-Control-Allow-Methods":
         "GET, POST, OPTIONS",
       "Access-Control-Allow-Headers":
@@ -14,6 +14,7 @@ export async function OPTIONS() {
     },
   });
 }
+
 export async function GET(request) {
   try {
     await connectDB();
@@ -26,17 +27,33 @@ export async function GET(request) {
       email,
     });
 
-    return Response.json({
-      success: true,
-      customer,
-    });
+    return Response.json(
+      {
+        success: true,
+        customer,
+      },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
   } catch (error) {
-    return Response.json({
-      success: false,
-      error: error.message,
-    });
+    return Response.json(
+      {
+        success: false,
+        error: error.message,
+      },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
   }
 }
+
+
 export async function POST(request) {
   try {
     await connectDB();
@@ -69,8 +86,7 @@ export async function POST(request) {
       },
       {
         headers: {
-          "Access-Control-Allow-Origin":
-            "https://vikram-solar-fnex.vercel.app",
+          "Access-Control-Allow-Origin": "*"
         },
       }
     );
@@ -82,8 +98,7 @@ export async function POST(request) {
       },
       {
         headers: {
-          "Access-Control-Allow-Origin":
-            "https://vikram-solar-fnex.vercel.app",
+          "Access-Control-Allow-Origin": "*"
         },
       }
     );
