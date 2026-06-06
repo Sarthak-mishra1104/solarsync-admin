@@ -30,6 +30,11 @@ export default function Sidebar() {
       href: "/leads",
     },
     {
+  name: "Customers",
+  icon: Users,
+  href: "/customers",
+},
+    {
       name: "Archived Leads",
       icon: Archive,
       href: "/archived-leads",
