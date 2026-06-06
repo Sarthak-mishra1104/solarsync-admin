@@ -1,4 +1,4 @@
-
+export const dynamic = "force-dynamic";
 import MobileNav from "@/components/MobileNav";
 import { connectDB } from "@/lib/mongodb";
 import Lead from "@/models/Lead";
