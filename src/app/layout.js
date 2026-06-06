@@ -13,17 +13,51 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "SolarSync Admin",
-  description: "Solar CRM Dashboard",
+  title: "SolarSync Admin | Smart Solar CRM",
+  description:
+    "Manage solar leads, site visits, proposals, customers and sales from one intelligent dashboard.",
+
+  keywords: [
+    "Solar CRM",
+    "Solar Dashboard",
+    "Lead Management",
+    "SolarSync",
+    "Solar Business",
+    "Solar Analytics",
+  ],
+
+  icons: {
+    icon: "/favicon.ico",
+  },
+
+  openGraph: {
+    title: "SolarSync Admin",
+    description:
+      "Smart Solar CRM & Lead Management Platform",
+    type: "website",
+  },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full">
+      <body
+        className="
+          min-h-screen
+          bg-gradient-to-br
+          from-slate-50
+          via-white
+          to-green-50
+          text-slate-900
+          antialiased
+        "
+      >
         <AuthProvider>
           {children}
         </AuthProvider>
@@ -31,3 +65,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
