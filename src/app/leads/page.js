@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import ArchiveButton from "@/components/ArchiveButton";
 import ScheduleVisitButton from "@/components/ScheduleVisitButton";
 import StatusDropdown from "@/components/StatusDropdown";
@@ -9,11 +10,12 @@ import Link from "next/link";
 async function getLeads() {
   await connectDB();
 
-  const leads = await Lead.find({
-  isArchived: false,
-})
+  const leads = await Lead.find({})
     .sort({ createdAt: -1 })
     .lean();
+
+  console.log("LEADS FOUND:", leads.length);
+  console.log("FIRST LEAD:", leads[0]);
 
   return JSON.parse(JSON.stringify(leads));
 }
