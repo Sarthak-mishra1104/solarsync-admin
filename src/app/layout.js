@@ -13,27 +13,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "SolarSync Admin | Smart Solar CRM",
+  title: "SolarSync Admin | Solar CRM Dashboard",
+
   description:
-    "Manage solar leads, site visits, proposals, customers and sales from one intelligent dashboard.",
+    "Professional solar CRM platform for lead management, site visits, customer tracking, analytics and sales operations.",
 
   keywords: [
     "Solar CRM",
     "Solar Dashboard",
     "Lead Management",
+    "Customer Management",
     "SolarSync",
-    "Solar Business",
+    "Renewable Energy",
     "Solar Analytics",
   ],
 
-  icons: {
-    icon: "/favicon.ico",
-  },
+  applicationName: "SolarSync Admin",
+
+  creator: "Intellisys Technologies",
 
   openGraph: {
     title: "SolarSync Admin",
     description:
       "Smart Solar CRM & Lead Management Platform",
+    siteName: "SolarSync",
     type: "website",
   },
 };

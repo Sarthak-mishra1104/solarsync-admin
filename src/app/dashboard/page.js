@@ -1,7 +1,18 @@
+
 import MobileNav from "@/components/MobileNav";
 import { connectDB } from "@/lib/mongodb";
 import Lead from "@/models/Lead";
 import Sidebar from "@/components/Sidebar";
+
+import {
+  Users,
+  UserCheck,
+  Archive,
+  CalendarDays,
+  CheckCircle2,
+  Zap,
+  ArrowUpRight,
+} from "lucide-react";
 
 async function getDashboardData() {
   await connectDB();
@@ -50,127 +61,179 @@ async function getDashboardData() {
   };
 }
 
-
 export default async function Dashboard() {
   const data = await getDashboardData();
 
   return (
-    <div className="min-h-screen bg-[#F8FFFA] md:flex">
+    <div className="min-h-screen bg-slate-50 md:flex">
       <Sidebar />
 
-      <main className="flex-1 p-3 md:p-8 overflow-x-hidden">
+      <main className="flex-1 p-4 md:p-8 overflow-x-hidden">
         <MobileNav />
 
-        {/* Hero */}
-        <div className="bg-gradient-to-r from-green-500 to-emerald-400 rounded-2xl p-4 text-white mb-4">
-          <p className="text-green-100 text-sm mb-1">
-            ☀ SolarSync Admin
-          </p>
+        {/* Header */}
 
-          <h1 className="text-2xl md:text-5xl font-bold mb-2">
-            Welcome Back 👋
-          </h1>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
 
-          <p className="hidden md:block text-lg text-green-50">
-            Manage leads, site visits, proposals and solar sales
-            from one powerful dashboard.
-          </p>
+          <div>
+            <p className="text-green-600 font-semibold uppercase tracking-wider text-sm">
+              SolarSync CRM
+            </p>
+
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-800 mt-1">
+              Dashboard
+            </h1>
+
+            <p className="text-slate-500 mt-2">
+              Monitor leads, site visits and conversions.
+            </p>
+          </div>
+
+          <div className="flex gap-3 mt-4 md:mt-0">
+
+            <button className="px-4 py-2 bg-green-600 text-white rounded-xl font-medium hover:bg-green-700 transition">
+              + Add Lead
+            </button>
+
+            <button className="px-4 py-2 bg-white border border-slate-200 rounded-xl font-medium hover:bg-slate-50 transition">
+              Schedule Visit
+            </button>
+
+          </div>
+
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-6 gap-3">
+        {/* KPI Cards */}
 
-          <div className="bg-white rounded-xl shadow p-3 border border-green-100">
-            <div className="text-2xl mb-1">👥</div>
-            <h3 className="text-xs md:text-base text-gray-500">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+
+          <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-5 text-white shadow-lg">
+            <div className="flex justify-between items-center">
+              <Users size={28} />
+              <ArrowUpRight size={20} />
+            </div>
+
+            <p className="text-green-100 mt-4">
               Total Leads
-            </h3>
-            <p className="text-xl md:text-4xl font-bold text-green-600 mt-1">
+            </p>
+
+            <h2 className="text-4xl font-bold mt-1">
               {data.totalLeads}
-            </p>
+            </h2>
           </div>
 
-          <div className="bg-white rounded-xl shadow p-3 border border-blue-100">
-            <div className="text-2xl mb-1">🟢</div>
-            <h3 className="text-xs md:text-base text-gray-500">
-              Active
-            </h3>
-            <p className="text-xl md:text-4xl font-bold text-blue-600 mt-1">
+          <div className="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-5 text-white shadow-lg">
+            <div className="flex justify-between items-center">
+              <UserCheck size={28} />
+              <ArrowUpRight size={20} />
+            </div>
+
+            <p className="text-blue-100 mt-4">
+              Active Leads
+            </p>
+
+            <h2 className="text-4xl font-bold mt-1">
               {data.activeLeads}
-            </p>
+            </h2>
           </div>
 
-          <div className="bg-white rounded-xl shadow p-3 border border-gray-100">
-            <div className="text-2xl mb-1">📦</div>
-            <h3 className="text-xs md:text-base text-gray-500">
-              Archive
-            </h3>
-            <p className="text-xl md:text-4xl font-bold text-gray-600 mt-1">
-              {data.archivedLeads}
-            </p>
-          </div>
+          <div className="bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl p-5 text-white shadow-lg">
+            <div className="flex justify-between items-center">
+              <CalendarDays size={28} />
+              <ArrowUpRight size={20} />
+            </div>
 
-          <div className="bg-white rounded-xl shadow p-3 border border-yellow-100">
-            <div className="text-2xl mb-1">📅</div>
-            <h3 className="text-xs md:text-base text-gray-500">
-              Visits
-            </h3>
-            <p className="text-xl md:text-4xl font-bold text-yellow-600 mt-1">
+            <p className="text-orange-100 mt-4">
+              Site Visits
+            </p>
+
+            <h2 className="text-4xl font-bold mt-1">
               {data.siteVisits}
-            </p>
+            </h2>
           </div>
 
-          <div className="bg-white rounded-xl shadow p-3 border border-indigo-100">
-            <div className="text-2xl mb-1">✅</div>
-            <h3 className="text-xs md:text-base text-gray-500">
-              Done
-            </h3>
-            <p className="text-xl md:text-4xl font-bold text-indigo-600 mt-1">
+          <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+            <div className="flex items-center gap-3">
+              <Archive className="text-slate-500" />
+              <span className="font-medium">
+                Archived Leads
+              </span>
+            </div>
+
+            <h2 className="text-3xl font-bold mt-4 text-slate-800">
+              {data.archivedLeads}
+            </h2>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+            <div className="flex items-center gap-3">
+              <CheckCircle2 className="text-indigo-500" />
+              <span className="font-medium">
+                Completed Visits
+              </span>
+            </div>
+
+            <h2 className="text-3xl font-bold mt-4 text-slate-800">
               {data.completedVisits}
-            </p>
+            </h2>
           </div>
 
-          <div className="bg-white rounded-xl shadow p-3 border border-emerald-100">
-            <div className="text-2xl mb-1">⚡</div>
-            <h3 className="text-xs md:text-base text-gray-500">
-              Converted
-            </h3>
-            <p className="text-xl md:text-4xl font-bold text-emerald-600 mt-1">
+          <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+            <div className="flex items-center gap-3">
+              <Zap className="text-emerald-500" />
+              <span className="font-medium">
+                Conversions
+              </span>
+            </div>
+
+            <h2 className="text-3xl font-bold mt-4 text-slate-800">
               {data.conversions}
-            </p>
+            </h2>
           </div>
 
         </div>
 
         {/* Recent Activity */}
-        <div className="mt-6 bg-white rounded-2xl shadow p-4 md:p-6">
-          <h3 className="text-lg md:text-xl font-bold mb-4">
-            Recent Activity
+
+        <div className="mt-8 bg-white rounded-3xl border border-slate-200 p-6 shadow-sm">
+
+          <h3 className="text-xl font-bold text-slate-800 mb-5">
+            Recent Leads
           </h3>
 
           <div className="space-y-3">
+
             {data.recentLeads.map((lead) => (
               <div
                 key={lead._id}
-                className="bg-green-50 border border-green-100 rounded-xl p-3 hover:bg-green-100 transition"
+                className="flex justify-between items-center border border-slate-100 rounded-2xl p-4 hover:bg-slate-50 transition"
               >
-                <div className="flex justify-between items-center">
+
+                <div className="flex items-center gap-4">
+
+                  <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-700">
+                    {lead.name?.charAt(0)}
+                  </div>
+
                   <div>
-                    <h4 className="font-semibold text-gray-800 text-sm md:text-base">
-                      👤 {lead.name}
+                    <h4 className="font-semibold text-slate-800">
+                      {lead.name}
                     </h4>
 
-                    <p className="text-gray-500 text-xs md:text-sm">
-                      📍 {lead.city || "Unknown City"}
+                    <p className="text-sm text-slate-500">
+                      {lead.city || "Unknown City"}
                     </p>
                   </div>
 
-                  <div className="text-xs md:text-sm text-green-600 font-medium">
-                    {lead.status}
-                  </div>
                 </div>
+
+                <div className="text-green-600 font-medium text-sm">
+                  {lead.status}
+                </div>
+
               </div>
             ))}
+
           </div>
 
         </div>
