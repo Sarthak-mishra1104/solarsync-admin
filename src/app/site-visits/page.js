@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import CompleteVisitButton from "@/components/CompleteVisitButton";
 import Sidebar from "@/components/Sidebar";
 import { connectDB } from "@/lib/mongodb";

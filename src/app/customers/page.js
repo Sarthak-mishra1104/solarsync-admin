@@ -1,4 +1,4 @@
-
+export const dynamic = "force-dynamic";
 import Sidebar from "@/components/Sidebar";
 import MobileNav from "@/components/MobileNav";
 import { connectDB } from "@/lib/mongodb";
