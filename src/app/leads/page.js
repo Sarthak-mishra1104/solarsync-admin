@@ -10,12 +10,11 @@ import Link from "next/link";
 async function getLeads() {
   await connectDB();
 
-  const leads = await Lead.find({})
+  const leads = await Lead.find({
+    isArchived: false,
+  })
     .sort({ createdAt: -1 })
     .lean();
-
-  console.log("LEADS FOUND:", leads.length);
-  console.log("FIRST LEAD:", leads[0]);
 
   return JSON.parse(JSON.stringify(leads));
 }
