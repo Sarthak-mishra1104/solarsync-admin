@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import RestoreButton from "@/components/RestoreButton";
 import { connectDB } from "@/lib/mongodb";
 import Lead from "@/models/Lead";
